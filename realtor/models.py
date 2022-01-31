@@ -3,6 +3,7 @@ from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from datetime import datetime, timedelta
 
 # Create your models here.
 
@@ -50,6 +51,8 @@ house_types = (
 )
 
 class House(models.Model):
+    employee = models.ForeignKey(
+        User, on_delete=models.CASCADE, default=None, null=True, blank=True)
     title = models.CharField(max_length=200,blank=True,null=True)
     house_type = models.CharField(choices=house_types,max_length=2000)
     location = models.CharField(max_length=200,blank=True,null=True)
@@ -81,6 +84,8 @@ car_types = (
 )
 
 class Car(models.Model):
+    employee = models.ForeignKey(
+        User, on_delete=models.CASCADE, default=None, null=True, blank=True)
     car_type = models.CharField(choices=car_types,max_length=2000,blank=True,null=True)
     title = models.CharField(max_length=200,blank=True,null=True)
     model = models.CharField(max_length=200,blank=True,null=True)
@@ -98,6 +103,8 @@ class Car(models.Model):
         return self.title
 
 class Land(models.Model):
+    employee = models.ForeignKey(
+        User, on_delete=models.CASCADE, default=None, null=True, blank=True)
     size = models.CharField(max_length=200,blank=True,null=True)
     price =  models.FloatField()
     location = models.CharField(max_length=200,blank=True,null=True)
@@ -106,6 +113,8 @@ class Land(models.Model):
     image1 = models.ImageField(upload_to='images/')
     image2 = models.ImageField(upload_to='images/')
 
+    def __str__(self):
+        return self.description
 
     
 

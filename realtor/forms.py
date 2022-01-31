@@ -1,3 +1,4 @@
+from os import name
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -106,10 +107,12 @@ class LandForm(forms.ModelForm):
         
 
 class ContactForm(forms.Form):
-    email = forms.EmailField(required=True)
+    name = forms.CharField(required=True)
+    phone = forms.IntegerField(required=True)
+    email = forms.EmailField(required=False)
     subject = forms.CharField(required=True)
     message = forms.CharField(widget=forms.Textarea(
-        attrs={'placeholder': 'Message, please add your contacts after the message.'}), required=True)
+        attrs={'placeholder': 'Message, please add any additional information.'}), required=True)
 
     def __str__(self):
         return self.from_email
