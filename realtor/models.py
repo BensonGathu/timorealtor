@@ -47,7 +47,9 @@ class Employee(models.Model):
 
 
 house_types = (
-    ("Massionette","Massionette"),
+    ("Sale","Sale"),
+    ("Lease","Lease"),
+    ("Rent","Rent"),
 )
 
 class House(models.Model):
