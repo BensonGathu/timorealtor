@@ -8,8 +8,10 @@ path('register/', views.employee_registration,name='registration'),
 path('login/', views.loginPage, name='login'),
 path('logout/', views.logoutUser, name='logout'),
 path('profile/', views.profile, name='profile'),
-path('uploadhouses/',views.upload_houses,name="uploadhouses"),
 path('dashboard/', views.dashboard, name='dashboard'),
+path('addhouses/',views.upload_houses,name="addhouses"),
+path('addcars/',views.upload_cars,name="addcars"),
+path('addland/',views.upload_land,name="addland"),
 
 
 ]

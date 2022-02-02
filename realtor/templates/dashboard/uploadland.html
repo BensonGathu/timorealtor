@@ -10,59 +10,36 @@
 <div class="col-xl-12">
     <!-- details card-->
     <div class="card mb-4">
-        <div class="card-header text-center">ADD HOUSE</div>
+        <div class="card-header text-center">ADD LAND</div>
         <div class="card-body ">
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="container">
                     
                 <div class="form-group">
-                    {{ form.title|as_crispy_field }}
+                    {{ form.size|as_crispy_field }}
                 </div>
                 <!-- Form Row-->
                 <div class="form-group">
-                    {{ form.house_type|as_crispy_field }}
-                    <br>
-                    <div class="form-row">
-                        <div class="col-md-1">{{ form.is_rent|as_crispy_field }}</div> <br>
-                        <div class="col-md-1">{{ form.is_buy|as_crispy_field }}</div>
-                    
-                </div>
+                    {{ form.location|as_crispy_field }}
+                
+                
                 </div>
                 <div class="form-group ">
-                    {{ form.location|as_crispy_field }}
+                    {{ form.description|as_crispy_field }}
                 </div>
 
                 <!-- Form Row        -->
                
 
                     <div class="form-group ">
-                        {{ form.description|as_crispy_field }}
+                        {{ form.price|as_crispy_field }}
                     </div>
-                    <div class="form-group">
-                        {{ form.hse_features|as_crispy_field }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ form.apt_features|as_crispy_field }}
-                    </div>
+                    
                 
-                <div class="form-row">
-
-                    <div class="form-group ">
-                        {{ form.bedroom|as_crispy_field }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ form.shower|as_crispy_field }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.garage|as_crispy_field }}
-                    </div>
-                </div>
                 <!-- Form Row-->
                 <div class="form-group">
-                    {{ form.price|as_crispy_field }}
+                    
                    
                         {{ form.images|as_crispy_field }}
                         {{ form.image1|as_crispy_field }}
@@ -74,7 +51,7 @@
            
         
                 <!-- Save changes button-->
-                <button class="btn btn-primary" type="submit">Post House</button>
+                <button class="btn btn-primary" type="submit">Post Land</button>
             </form>
 
         </div>

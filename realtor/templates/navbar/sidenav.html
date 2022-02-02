@@ -13,69 +13,44 @@
               <li>
                   <a href="{% url 'home' %}"><i class="menu-icon fa fa-home"></i>Home </a>
               </li>
-              <li class="menu-title">Tours</li>
+              <li class="menu-title">Houses</li>
               <li class="menu-item-has-children dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="menu-icon fa fa-map-marker"></i>Tours </a>
+                      <i class="menu-icon fa fa-map-marker"></i>Houses</a>
                   <ul class="sub-menu children dropdown-menu">
-                      <li><i class="fa fa-puzzle-piece"></i><a href="">Student Tours <span
-                                  class="count bg-pink">6</span></a></li>
-                      <li><i class="fa fa-users"></i><a href="#">Group Tours <span
-                                  class="count bg-dark">{{ group_count }}</span></a></li>
+                      <li><i class="fa fa-puzzle-piece"></i><a href="{% url 'addhouses' %}">Add House <span
+                                  class="count bg-pink"></span></a></li>
+                      <li><i class="fa fa-users"></i><a href="#">My Houses <span
+                                  class="count bg-red">{{ house_count }}</span></a></li>
 
                   </ul>
               </li>
-              <li>
-                  <a href="#"><i class="menu-icon fa fa-road"></i>Road Trips <span
-                          class="count bg-primary">{{ trips_count }}</span> </a>
-              </li>
-              <li>
-                  <a href="#"><i class="menu-icon fa fa-road"></i>Adventures
-                      <span class="count bg-dark">{{ adventures_count }}</span> </a>
-              </li>
-              <li>
-                  <a href="#"><i class="menu-icon fa fa-camera"></i>Gallery
-                      <span class="count bg-dark">{{ gallery_count }}</span> </a>
-              </li>
-              <li>
-                  <a href=""><i class="menu-icon fa fa-stumbleupon"></i>Hiking <span
-                          class="count bg-warning">16</span></a>
-              </li>
-              <li>
-                  <a href=""><i class="menu-icon fa fa-compass"></i>Camping <span class="count bg-danger">5</span></a>
-              </li>
-              <li>
-                  <a href=""><i class="menu-icon fa fa-heart"></i>HoneyMoons <span
-                          class="count bg-success">17</span></a>
-              </li>
-              <li>
-                  <a href=""><i class="menu-icon fa fa-building"></i>Team Buildings <span
-                          class="count bg-info">9</span></a>
-              </li>
 
-
-              <li class="menu-title">Bookings</li>
-
+              <li class="menu-title">Cars</li>
               <li class="menu-item-has-children dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="menu-icon fa fa-credit-card"></i>Bookings</a>
+                      <i class="menu-icon fa fa-map-marker"></i>Cars</a>
                   <ul class="sub-menu children dropdown-menu">
-                      <li><i class="menu-icon fa fa-hotel"></i><a href="">Hotel Bookings <span
-                                  class="count bg-secondary">12</span>
-                          </a></li>
-                      <li><i class="menu-icon fa fa-plane"></i><a href="">Flight Bookings <span
-                                  class="count bg-dark">8</span></a>
-                      </li>
-                      <li><i class="menu-icon fa fa-ticket"></i><a href="">Ticketing <span
-                                  class="count bg-warning">2</span></a>
-                      </li>
+                      <li><i class="fa fa-puzzle-piece"></i><a href="{% url 'addcars' %}">Add Car <span
+                                  class="count bg-pink"></span></a></li>
+                      <li><i class="fa fa-users"></i><a href="#">My Cars <span
+                                  class="count">{{ car_count }}</span></a></li>
+
                   </ul>
               </li>
-              <li>
-                  <a href=""><i class="menu-icon fa fa-taxi"></i>Airport Transfers <span
-                          class="count bg-danger-light">10</span></a>
-              </li>
+            
+              <li class="menu-title">Land</li>
+              <li class="menu-item-has-children dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="menu-icon fa fa-map-marker"></i>Land</a>
+                  <ul class="sub-menu children dropdown-menu">
+                      <li><i class="fa fa-puzzle-piece"></i><a href="{% url 'addland' %}">Add Land <span
+                                  class="count bg-pink"></span></a></li>
+                      <li><i class="fa fa-users"></i><a href="#">Lands <span
+                                  class="">{{ land_count }}</span></a></li>
 
+                  </ul>
+              </li>
 
           </ul>
       </div>

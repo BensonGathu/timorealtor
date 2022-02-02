@@ -118,3 +118,45 @@ def upload_houses(request):
     return render(request, 'dashboard/uploadhouses.html', context)
 
 
+#view to upload cars
+def upload_cars(request):
+    current_user = request.user
+    form = CarForm(request.POST or None,
+                           request.FILES or None)
+    if current_user.is_authenticated:
+        if request.method == 'POST':
+            form = CarForm(
+                request.POST or None, request.FILES or None)
+            if form.is_valid():
+                form.employee = current_user
+                form.save()
+                messages.success(
+                    request, f'You have successfully uploaded a car.')
+                return redirect('dashboard')
+
+    context = {'form': form,
+               'current_user': current_user
+               }
+    return render(request, 'dashboard/uploadcar.html', context)
+
+
+#view to upload land
+def upload_land(request):
+    current_user = request.user
+    form = LandForm(request.POST or None,request.FILES or None)
+    if current_user.is_authenticated:
+        if request.method == 'POST':
+            form = LandForm(
+                request.POST or None, request.FILES or None)
+            if form.is_valid():
+                form.employee = current_user
+                form.save()
+                messages.success(
+                    request, f'Land successfully uploaded.')
+                return redirect('dashboard')
+
+    context = {'form': form,
+               'current_user': current_user
+               }
+    return render(request, 'dashboard/uploadland.html', context)
+
