@@ -75,6 +75,19 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
+@login_required
+def dashboard(request):
+    house_count = House.objects.count()
+    land_count = Land.objects.count()
+    car_count = Car.objects.count()
+
+    context = {"house_count":house_count,
+                "land_count":land_count,
+                "car_count":car_count
+                 }
+    return render(request, 'dashboard/dashboard.html', context)
+
+
 def home(request):
     name="Timo"
     all_cars = Car.objects.all()
@@ -93,6 +106,7 @@ def upload_houses(request):
             form = HouseForm(
                 request.POST or None, request.FILES or None)
             if form.is_valid():
+                form.employee = current_user
                 form.save()
                 messages.success(
                     request, f'You have successfully uploaded a house.')

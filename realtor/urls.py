@@ -9,6 +9,7 @@ path('login/', views.loginPage, name='login'),
 path('logout/', views.logoutUser, name='logout'),
 path('profile/', views.profile, name='profile'),
 path('uploadhouses/',views.upload_houses,name="uploadhouses"),
+path('dashboard/', views.dashboard, name='dashboard'),
 
 
 ]
