@@ -96,7 +96,7 @@ class LandForm(forms.ModelForm):
         'image1','image2']
 
     def __init__(self, *args, **kwargs):
-        super(CarForm, self).__init__(*args, **kwargs)
+        super(LandForm, self).__init__(*args, **kwargs)
         self.fields['size'].required = True
         self.fields['price'].required = True
         self.fields['location'].required = True
