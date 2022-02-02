@@ -21,7 +21,7 @@ class EmployeeSignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username','email', 'password1', 'password2']
 
 
 class EmployeeUpdateForm(forms.ModelForm):
@@ -45,7 +45,7 @@ class HouseForm(forms.ModelForm):
         model = House
         fields = ['title', 'house_type', 'location',
                   'is_rent', 'is_buy', 'price', 'images',
-                  'images1','image2','bedroom','shower',"garage",
+                  'image1','image2','bedroom','shower',"garage",
                   'hse_features','apt_features','description']
 
     def __init__(self, *args, **kwargs):
@@ -56,8 +56,8 @@ class HouseForm(forms.ModelForm):
         self.fields['is_rent'].required = False
         self.fields['is_buy'].required = False
         self.fields['images'].required = True
-        self.fields['images1'].required = True
-        self.fields['images2'].required = True
+        self.fields['image1'].required = True
+        self.fields['image2'].required = True
         self.fields['price'].required = True
         self.fields['garage'].required = False
         self.fields['bedroom'].required = True
@@ -73,7 +73,7 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = ['title', 'model', 'number_plate','year','images',
-        'images1','images2','car_type','price','location']
+        'image1','image2','car_type','price','location']
 
     def __init__(self, *args, **kwargs):
         super(CarForm, self).__init__(*args, **kwargs)
@@ -83,8 +83,8 @@ class CarForm(forms.ModelForm):
         self.fields['number_plate'].required = True
         self.fields['year'].required = True
         self.fields['images'].required = True
-        self.fields['images1'].required = True
-        self.fields['images2'].required = True
+        self.fields['image1'].required = True
+        self.fields['image2'].required = True
         self.fields['price'].required = True
         self.fields['location'].required = True
 
@@ -93,7 +93,7 @@ class LandForm(forms.ModelForm):
     class Meta:
         model = Land
         fields = ['size', 'price', 'location','description','images',
-        'images1','images2']
+        'image1','image2']
 
     def __init__(self, *args, **kwargs):
         super(CarForm, self).__init__(*args, **kwargs)
@@ -102,8 +102,8 @@ class LandForm(forms.ModelForm):
         self.fields['location'].required = True
         self.fields['description'].required = True
         self.fields['images'].required = True
-        self.fields['images1'].required = True
-        self.fields['images2'].required = True
+        self.fields['image1'].required = True
+        self.fields['image2'].required = True
         
 
 class ContactForm(forms.Form):

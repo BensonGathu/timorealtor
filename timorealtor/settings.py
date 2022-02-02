@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'realtor',
     "django_bootstrap5",
+    'crispy_forms',
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [

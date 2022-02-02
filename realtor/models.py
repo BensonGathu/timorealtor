@@ -75,7 +75,7 @@ class House(models.Model):
      
     def __str__(self):
         return self.title
-
+ 
 car_types = (
     ("Vehicle Parts & Accessories","Vehicle Parts & Accessories"),
     ("Car","Car"),

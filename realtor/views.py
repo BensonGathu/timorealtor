@@ -1,8 +1,106 @@
 from unicodedata import name
-from django.shortcuts import render
+from django.forms import forms
+from django.shortcuts import render,redirect
+from .forms import *
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.messages import constants as messages
+from django.contrib import messages
 
 # Create your views here.
+
+def employee_registration(request):
+    if request.method == 'POST':
+        form = EmployeeSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            first_name = form.cleaned_data.get('username')
+            messages.success(
+                request, first_name + ' ' + 'your account was created successfully!')
+            return redirect('login')
+    else:
+        form = EmployeeSignUpForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'auth/register.html', context)
+
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username,
+                            password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Logged in as' + ' ' + username)
+
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid Username or Password')
+
+    context = {}
+    return render(request, 'auth/login.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    messages.info(
+        request, 'You have logged out. Log back in to update schedule.')
+    return redirect('home')
+
+
+@login_required
+def profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        u_form = EmployeeUpdateForm(request.POST, instance=request.user)
+        p_form = EmployeeProfileUpdateForm(
+            request.POST, request.FILES, instance=request.user.employee)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('profile')
+    else:
+        u_form = EmployeeUpdateForm(instance=request.user)
+        p_form = EmployeeProfileUpdateForm(instance=request.user.employee)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        'current_user': current_user,
+    }
+    return render(request, 'profile.html', context)
+
+
 def home(request):
     name="Timo"
+    all_cars = Car.objects.all()
+    all_land = Land.objects.all()
+    all_houses = House.objects.all()
     context = {"name":name}
     return render(request,"home.html",context)
+
+#view to upload Houses
+def upload_houses(request):
+    current_user = request.user
+    form = HouseForm(request.POST or None,
+                           request.FILES or None)
+    if current_user.is_authenticated:
+        if request.method == 'POST':
+            form = HouseForm(
+                request.POST or None, request.FILES or None)
+            if form.is_valid():
+                form.save()
+                messages.success(
+                    request, f'You have successfully uploaded a house.')
+                return redirect('dashboard')
+
+    context = {'form': form,
+               'current_user': current_user
+               }
+    return render(request, 'dashboard/uploadhouses.html', context)
+
+
