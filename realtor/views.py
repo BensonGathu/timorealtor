@@ -89,11 +89,11 @@ def dashboard(request):
 
 
 def home(request):
-    name="Timo"
+    current_user = request.user
     all_cars = Car.objects.all()
     all_land = Land.objects.all()
     all_houses = House.objects.all()
-    context = {"name":name}
+    context = {"current_user":current_user}
     return render(request,"home.html",context)
 
 #view to upload Houses
