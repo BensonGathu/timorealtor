@@ -1,6 +1,7 @@
+from multiprocessing import context
 from unicodedata import name
 from django.forms import forms
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -164,4 +165,12 @@ def upload_land(request):
                'current_user': current_user
                }
     return render(request, 'dashboard/uploadland.html', context)
+
+def car_details(request,id):
+    selected_property = get_object_or_404(Car,pk=id)
+    context = {"selected_property":selected_property}
+    return render(request, 'cardetails.html', context)
+
+
+
 

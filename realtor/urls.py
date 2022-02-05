@@ -12,6 +12,7 @@ path('dashboard/', views.dashboard, name='dashboard'),
 path('addhouses/',views.upload_houses,name="addhouses"),
 path('addcars/',views.upload_cars,name="addcars"),
 path('addland/',views.upload_land,name="addland"),
+path('car_details/<int:id>',views.car_details,name="details"),
 
 
 ]
