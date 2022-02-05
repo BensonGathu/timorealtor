@@ -93,7 +93,12 @@ def home(request):
     all_cars = Car.objects.all()
     all_land = Land.objects.all()
     all_houses = House.objects.all()
-    context = {"current_user":current_user}
+    context = {"current_user":current_user,
+                "all_cars":all_cars,
+                "all_land":all_land,
+                "all_houses":all_houses
+                }
+    all_data = []
     return render(request,"home.html",context)
 
 #view to upload Houses
