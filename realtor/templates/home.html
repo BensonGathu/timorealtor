@@ -5,6 +5,7 @@
 
 {% block content %}
 <!-- Home -->
+<!-- carousel -->
 {%for land in all_land %}
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -12,6 +13,7 @@
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+   
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="{{land.images.url}}" class="d-block w-100" alt="..." width="300" height="400">
@@ -43,9 +45,11 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+    {%endfor%}
   </div>
-  {%endfor%}
+  
   <br>
+  <!-- listings -->
 <div class="listings">
 
     <div class="grey-bg container">
@@ -56,12 +60,10 @@
             </div>
           </div>
           <!-- cars -->
-         
-          <div class="row" >
-           
-            <div class="col-xl-4 col-sm-6 col-12"> 
-                {% for car in all_cars %}
-                <div class="card" style="width: 18rem;">
+          <div class="row" > 
+            {% for car in all_cars %}
+            <div class="col-xl-4 col-sm-6 col-12">  
+                <div class="card" style="width: 23rem;">
                   <img src="{{car.images.url}}" class="card-img-top" alt="...">
                   <div class="card-content">
                     <div class="card-body">
@@ -73,21 +75,24 @@
                         <div class="media-body text-left">
                           <h3>278</h3>
                           <span>New Posts</span>
+                          <a href="#" class="btn btn-outline-success btn-sm float-right" role="button" aria-disabled="true">Details</a>
                         </div>
+                        
                       </div>
                     </div>
                   </div>
                 </div>
-                {%endfor%}
             </div>
-
-        
+            {%endfor%}
+          </div>
+          
+          
         <!-- houses -->
           <div class="row">
-    
+            {% for house in all_houses %}
             <div class="col-xl-4 col-sm-6 col-12"> 
-                {% for house in all_houses %}
-                <div class="card" style="width: 18rem;">
+                
+                <div class="card" style="width: 23rem;">
                   <img src="{{house.images.url}}" class="card-img-top" alt="...">
                   <div class="card-content">
                     <div class="card-body">
@@ -99,6 +104,7 @@
                         <div class="media-body text-left">
                           <h3>278</h3>
                           <span>New Posts</span>
+                          <a href="#" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
                         </div>
                       </div>
                     </div>
@@ -113,15 +119,13 @@
 
         <!-- land -->
         
-          <div class="row">
-     
-            <div class="col-xl-4 col-sm-6 col-12"> 
-                
-                <div class="card" style="width: 18rem;">
-                    {% for land in all_land%}
+        <div class="row">
+            {% for land in all_land %}
+            <div class="col-xl-4 col-sm-6 col-12">     
+                <div class="card" style="width: 23rem;">
                   <img src="{{land.images.url}}" class="card-img-top" alt="...">
                   <div class="card-content">
-                    <div class="card-body">
+                    <div class="card-body" >
                       <h5 class="card-title">Card title</h5>
                       <div class="media d-flex">
                         <div class="align-self-center">
@@ -130,115 +134,25 @@
                         <div class="media-body text-left">
                           <h3>278</h3>
                           <span>New Posts</span>
+                          <a href="#" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
                         </div>
                       </div>
                     </div>
                   </div>
-                  {%endfor%}
                 </div>
-                
-              
-        <!-- </section> -->
+            </div>
+            {%endfor%}
+        </div>
         
-        <!-- <section id="stats-subtitle">
-        <div class="row">
-          <div class="col-12 mt-3 mb-1">
-            <h4 class="text-uppercase">Statistics With Subtitle</h4>
-            <p>Statistics on minimal cards with Title &amp; Sub Title.</p>
-          </div>
-        </div>
-      
-        <div class="row">
-          <div class="col-xl-6 col-md-12">
-            <div class="card overflow-hidden">
-              <div class="card-content">
-                <div class="card-body cleartfix">
-                  <div class="media align-items-stretch">
-                    <div class="align-self-center">
-                      <i class="icon-pencil primary font-large-2 mr-2"></i>
-                    </div>
-                    <div class="media-body">
-                      <h4>Total Posts</h4>
-                      <span>Monthly blog posts</span>
-                    </div>
-                    <div class="align-self-center">
-                      <h1>18,000</h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-xl-6 col-md-12">
-            <div class="card">
-              <div class="card-content">
-                <div class="card-body cleartfix">
-                  <div class="media align-items-stretch">
-                    <div class="align-self-center">
-                      <i class="icon-speech warning font-large-2 mr-2"></i>
-                    </div>
-                    <div class="media-body">
-                      <h4>Total Comments</h4>
-                      <span>Monthly blog comments</span>
-                    </div>
-                    <div class="align-self-center"> 
-                      <h1>84,695</h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-        <div class="row">
-          <div class="col-xl-6 col-md-12">
-            <div class="card">
-              <div class="card-content">
-                <div class="card-body cleartfix">
-                  <div class="media align-items-stretch">
-                    <div class="align-self-center">
-                      <h1 class="mr-2">$76,456.00</h1>
-                    </div>
-                    <div class="media-body">
-                      <h4>Total Sales</h4>
-                      <span>Monthly Sales Amount</span>
-                    </div>
-                    <div class="align-self-center">
-                      <i class="icon-heart danger font-large-2"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-xl-6 col-md-12">
-            <div class="card">
-              <div class="card-content">
-                <div class="card-body cleartfix">
-                  <div class="media align-items-stretch">
-                    <div class="align-self-center">
-                      <h1 class="mr-2">$36,000.00</h1>
-                    </div>
-                    <div class="media-body">
-                      <h4>Total Cost</h4>
-                      <span>Monthly Cost</span>
-                    </div>
-                    <div class="align-self-center">
-                      <i class="icon-wallet success font-large-2"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      </div>
-
+          
+          
+</div> 
 </div>
+  
+<br>
+
+    
+
 
 <!-- Intro -->
 

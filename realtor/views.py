@@ -90,9 +90,9 @@ def dashboard(request):
 
 def home(request):
     current_user = request.user
-    all_cars = Car.objects.all()
-    all_land = Land.objects.all()
-    all_houses = House.objects.all()
+    all_cars = Car.objects.all().order_by('-id')[:3] 
+    all_land = Land.objects.all().order_by('-id')[:3] 
+    all_houses = House.objects.all().order_by('-id')[:3] 
     context = {"current_user":current_user,
                 "all_cars":all_cars,
                 "all_land":all_land,
