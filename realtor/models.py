@@ -89,6 +89,7 @@ class Car(models.Model):
     employee = models.ForeignKey(
         User, on_delete=models.CASCADE, default=None, null=True, blank=True)
     car_type = models.CharField(choices=car_types,max_length=2000,blank=True,null=True)
+    description = models.CharField(max_length=2000,blank=True,null=True)
     title = models.CharField(max_length=200,blank=True,null=True)
     model = models.CharField(max_length=200,blank=True,null=True)
     number_plate = models.CharField(max_length=200,blank=True,null=True)

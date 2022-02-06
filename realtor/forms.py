@@ -73,7 +73,7 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = ['title', 'model', 'number_plate','year','images',
-        'image1','image2','car_type','price','location']
+        'image1','image2','car_type','price','location','description']
 
     def __init__(self, *args, **kwargs):
         super(CarForm, self).__init__(*args, **kwargs)
@@ -87,6 +87,7 @@ class CarForm(forms.ModelForm):
         self.fields['image2'].required = True
         self.fields['price'].required = True
         self.fields['location'].required = True
+        self.fields['description'].required = True
 
 class LandForm(forms.ModelForm):
 
