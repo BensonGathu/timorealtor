@@ -61,94 +61,89 @@
           </div>
           <!-- cars -->
           
-          <div class="row" > 
-            {% for car in all_cars %} 
-            <div class="col-xl-4 col-sm-6 col-12"> 
-                
-                <div class="card" style="width: 23rem;">
-                    
-                  <img src="{{car.images.url}}" class="card-img-top" alt="...">
-                  <div class="card-content">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <div class="media d-flex">
-                        <div class="align-self-center">
-                          <i class="icon-pencil primary font-large-2 float-left"></i>
-                        </div>
-                        <div class="media-body text-left">
-                          <h3>278</h3>
-                          <span>New Posts</span>
-                          <a href="{%url 'car_details' car.id %}" class="btn btn-outline-success btn-sm float-right" role="button" aria-disabled="true">Details</a>
-                        </div>
-                        
-                      </div>
-                    </div>
+          <div class="container card-group">
+            {% for car in all_cars %}
+            <div class="col-4">
+            <div class="card">
+              <img src="{{car.images.url}}" class="card-img-top" alt="...">
+              <div class="card-body" >
+                <h5 class="card-title"><b>{{car.title}}</b></h5>
+                <div class="card-footer">
+                <div class="media d-flex">
+                  <div class="media-body text-left">
+                    <small class="text-muted">
+                    <h6>{{car.price}}</h6>
+                    <span>{{car.year}}</span>
+                        </small>
+                    <a href="{% url 'car_details' car.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+                    </div>     
+                   
                   </div>
-                  
                 </div>
-                
+              </div>
             </div>
+        </div>
             {%endfor%}
-          </div>
-         
+            </div>
           
           
         <!-- houses -->
-          <div class="row">
+        <div class="container card-group">
             {% for house in all_houses %}
-            <div class="col-xl-4 col-sm-6 col-12"> 
-                
-                <div class="card" style="width: 23rem;">
-                  <img src="{{house.images.url}}" class="card-img-top" alt="...">
-                  <div class="card-content">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <div class="media d-flex">
-                        <div class="align-self-center">
-                          <i class="icon-pencil primary font-large-2 float-left"></i>
-                        </div>
-                        <div class="media-body text-left">
-                          <h3>278</h3>
-                          <span>New Posts</span>
-                          <a href="{%url 'house_details' house.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
-                        </div>
-                      </div>
-                    </div>
+            <div class="col-4">
+            <div class="card">
+              <img src="{{house.images.url}}" class="card-img-top" alt="...">
+              <div class="card-body" >
+                <h5 class="card-title"><b>{{house.title}}</b></h5>
+                <div class="card-footer">
+                <div class="media d-flex">
+                  <div class="align-self-center">
+                    <i class="icon-pencil primary font-large-2 float-left"></i>
                   </div>
+                  <div class="media-body text-left">
+                    <small class="text-muted">
+                    <h6>{{house.price}}</h6>
+                    <span>{{house.house_type}}</span>
+                    <a href="{% url 'house_details' house.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+                    </small>
                 </div>
-                
-              </div> 
-              
-              {%endfor%}
-          </div>
+                </div>
+                </div>
+              </div>
+            </div>
+        </div>
+            {%endfor%}
+            </div>
         <br>
 
         <!-- land -->
         
-        <div class="row">
+        <div class="container card-group">
             {% for land in all_land %}
-            <div class="col-xl-4 col-sm-6 col-12">     
-                <div class="card" style="width: 23rem;">
-                  <img src="{{land.images.url}}" class="card-img-top" alt="...">
-                  <div class="card-content">
-                    <div class="card-body" >
-                      <h5 class="card-title">Card title</h5>
-                      <div class="media d-flex">
-                        <div class="align-self-center">
-                          <i class="icon-pencil primary font-large-2 float-left"></i>
-                        </div>
-                        <div class="media-body text-left">
-                          <h3>278</h3>
-                          <span>New Posts</span>
-                          <a href="{% url 'land_details' land.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
-                        </div>
-                      </div>
-                    </div>
+            <div class="col-4">
+            <div class="card">
+              <img src="{{land.images.url}}" class="card-img-top" alt="...">
+              <div class="card-body" >
+                <h5 class="card-title"><b>{{land.title}}</b></h5>
+                <div class="card-footer">
+                <div class="media d-flex">
+                  <div class="align-self-center">
+                    <i class="icon-pencil primary font-large-2 float-left"></i>
+                  </div>
+                  <div class="media-body text-left">
+                    <small class="text-muted">
+                    <h6>{{land.price}}</h6>
+                    <span>{{land.size}}</span>
+                    </small>
+                    <a href="{% url 'land_details' land.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
                   </div>
                 </div>
+                </div>
+              </div>
             </div>
-            {%endfor%}
         </div>
+            {%endfor%}
+            </div>
         
           
           

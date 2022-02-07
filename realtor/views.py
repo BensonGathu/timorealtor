@@ -186,12 +186,14 @@ def land_details(request,id):
 def buyland(request):
     selected_property = Land.objects.filter(is_buy=True)
     context = {
+        "buy":"buy",
         "selected_property":selected_property,
     }
     return render(request, 'lands.html', context)
 def rentland(request):
     selected_property = Land.objects.filter(is_rent=True)
     context = {
+        "rent":"rent",
         "selected_property":selected_property,
     }
     return render(request, 'lands.html', context)
@@ -200,12 +202,14 @@ def rentland(request):
 def buycar(request):
     selected_property = Car.objects.filter(is_buy=True)
     context = {
+        "buy":"buy",
         "selected_property":selected_property,
     }
     return render(request, 'cars.html', context)
 def rentcar(request):
     selected_property = Car.objects.filter(is_rent=True)
     context = {
+        "rent":"rent",
         "selected_property":selected_property,
     }
     return render(request, 'cars.html', context)
@@ -214,6 +218,7 @@ def rentcar(request):
 def buyhouse(request):
     selected_property = House.objects.filter(is_buy=True)
     context = {
+        "buy":"buy",
         "selected_property":selected_property,
     }
     return render(request, 'houses.html', context)
@@ -221,6 +226,7 @@ def buyhouse(request):
 def renthouse(request):
     selected_property = House.objects.filter(is_rent=True)
     context = {
+        "rent":"rent",
         "selected_property":selected_property,
     }
     return render(request, 'houses.html', context)
