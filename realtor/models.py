@@ -47,9 +47,9 @@ class Employee(models.Model):
 
 
 house_types = (
-    ("Sale","Sale"),
-    ("Lease","Lease"),
-    ("Rent","Rent"),
+    ("Bungalow","Bungalow"),
+    ("Massionete","Massionete"),
+    ("Penthouse","Penthouse"),
 )
 
 class House(models.Model):
@@ -89,11 +89,13 @@ class Car(models.Model):
     employee = models.ForeignKey(
         User, on_delete=models.CASCADE, default=None, null=True, blank=True)
     car_type = models.CharField(choices=car_types,max_length=2000,blank=True,null=True)
-    description = models.CharField(max_length=2000,blank=True,null=True)
+    description = models.TextField(max_length=2000,blank=True,null=True)
     title = models.CharField(max_length=200,blank=True,null=True)
     model = models.CharField(max_length=200,blank=True,null=True)
     number_plate = models.CharField(max_length=200,blank=True,null=True)
     year = models.IntegerField()
+    is_rent = models.BooleanField(default=False)
+    is_buy = models.BooleanField(default=False)
     images = models.ImageField(upload_to='images/')
     image1 = models.ImageField(upload_to='images/')
     image2 = models.ImageField(upload_to='images/')
@@ -108,10 +110,13 @@ class Car(models.Model):
 class Land(models.Model):
     employee = models.ForeignKey(
         User, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    title = models.CharField(max_length=200,blank=True,null=True)
     size = models.CharField(max_length=200,blank=True,null=True)
     price =  models.FloatField()
     location = models.CharField(max_length=200,blank=True,null=True)
-    description =  models.CharField(max_length=200,blank=True,null=True)
+    is_rent = models.BooleanField(default=False)
+    is_buy = models.BooleanField(default=False)
+    description =  models.TextField(max_length=200,blank=True,null=True)
     images = models.ImageField(upload_to='images/')
     image1 = models.ImageField(upload_to='images/')
     image2 = models.ImageField(upload_to='images/')

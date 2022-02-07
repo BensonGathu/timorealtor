@@ -121,9 +121,17 @@
                 
                     <div class="hotel_title_content">
                         <h1 class="hotel_title">{{ selected_property.title}}</h1>
-                        <div class="hotel_location">{{ selected_property.model }} </div>
-                        <div class="hotel_location">{{ selected_property.year }} </div>
+                        {% if selected_property.is_rent and selected_property.is_buy %}
+                          For Sale For Rent
+                        {% elif selected_property.is_rent %}
+                          For Rent
+                        {% elif selected_property.is_buy %}
+                        For Sale
+                        {%endif%}
+                        <div class="hotel_location">{{ selected_property.house_type}} </div>
+                        <div class="hotel_location">{{ selected_property.location }} </div>
                         <div class="hotel_location">{{ selected_property.number_plate  }}</div>
+
                     </div>
                 </div>
             </div>
@@ -210,7 +218,7 @@
                                               
                                     <div class="property_info_tags">
                                         <ul class="property_icons_list" style="text-decoration: none;">
-                                            <i class="fas fa-gas-pump"></i>
+                                           
                                             <li class="hotel_icons_item"><img src="../../static/icons/gas-pump-solid.svg" alt=""></li>
                                             <li class="hotel_icons_item"><img src="../../static/images/compass.png" alt=""></li>
                                             <li class="hotel_icons_item"><img src="../../static/images/bicycle.png" alt=""></li>
@@ -224,6 +232,22 @@
                              
                                 
                             </div>
+                            <br>
+                            <div class="hotel_info_text">
+                              <div class="card" style="background-color: ghostwhite;">
+                                  <div class="card-body">
+                                      <p style="text-align: center;">Details</p>
+                                      <hr>
+                                         {{selected_property.description | linebreaks }}
+                                            
+                                 
+                                  </div>
+                                </div>
+                                
+
+                           
+                              
+                          </div>
     
                             
     
@@ -234,9 +258,7 @@
                      
     
                         </div>
-                        <div class="col-md-4">
-                            
-                           
+                        <div class="col-md-4"> 
                            <form class="w-80 p-3">
                             <div class="mb-2" >
                                 <!-- <label for="exampleInputName" class="form-label">Name</label> -->
@@ -255,7 +277,7 @@
                             </div>
                             <div class="mb-2">
                                 <!-- <label for="exampleInputName" class="form-label">Message</label> -->
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello i'm interested in [{{selected_property.description}}] </textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello i'm interested in [{{selected_property.title}} {{selected_property.model}} {{selected_property.year}} {{selected_property.number_plate}}] </textarea>
                                
                               </div>
                             <!-- <div class="mb-3 form-check">

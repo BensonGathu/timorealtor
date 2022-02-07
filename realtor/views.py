@@ -169,7 +169,61 @@ def upload_land(request):
 def car_details(request,id):
     selected_property = get_object_or_404(Car,pk=id)
     context = {"selected_property":selected_property}
-    return render(request, 'cardetails.html', context)
+    return render(request, 'singlecardetails.html', context)
+
+def house_details(request,id):
+    selected_property = get_object_or_404(House,pk=id)
+    context = {"selected_property":selected_property}
+    return render(request, 'singlehousedetails.html', context)
+
+def land_details(request,id):
+    selected_property = get_object_or_404(Land,pk=id)
+    context = {"selected_property":selected_property}
+    return render(request, 'singlelanddetails.html', context)
+
+
+ #filter option for specific properties
+def buyland(request):
+    selected_property = Land.objects.filter(is_buy=True)
+    context = {
+        "selected_property":selected_property,
+    }
+    return render(request, 'lands.html', context)
+def rentland(request):
+    selected_property = Land.objects.filter(is_rent=True)
+    context = {
+        "selected_property":selected_property,
+    }
+    return render(request, 'lands.html', context)
+
+
+def buycar(request):
+    selected_property = Car.objects.filter(is_buy=True)
+    context = {
+        "selected_property":selected_property,
+    }
+    return render(request, 'cars.html', context)
+def rentcar(request):
+    selected_property = Car.objects.filter(is_rent=True)
+    context = {
+        "selected_property":selected_property,
+    }
+    return render(request, 'cars.html', context)
+
+
+def buyhouse(request):
+    selected_property = House.objects.filter(is_buy=True)
+    context = {
+        "selected_property":selected_property,
+    }
+    return render(request, 'houses.html', context)
+   
+def renthouse(request):
+    selected_property = House.objects.filter(is_rent=True)
+    context = {
+        "selected_property":selected_property,
+    }
+    return render(request, 'houses.html', context)
 
 
 

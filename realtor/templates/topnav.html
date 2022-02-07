@@ -22,9 +22,9 @@
               Buy
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Car</a></li>
-              <li><a class="dropdown-item" href="#">House</a></li>
-              <li><a class="dropdown-item" href="#">Land</a></li>
+              <li><a class="dropdown-item" href="{%url 'buycar' %}" onclick="print">Car</a></li>
+              <li><a class="dropdown-item" href="{%url 'buyhouse'%}">House</a></li>
+              <li><a class="dropdown-item" href="{%url 'buyland'%}">Land</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -32,9 +32,9 @@
               Rent
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Car</a></li>
-              <li><a class="dropdown-item" href="#">House</a></li>
-              <li><a class="dropdown-item" href="#">Land</a></li>
+              <li><a class="dropdown-item" href="{%url 'rentcar' %}">Car</a></li>
+              <li><a class="dropdown-item" href="{%url 'renthouse' %}">House</a></li>
+              <li><a class="dropdown-item" href="{%url 'rentland' %}">Land</a></li>
             </ul>
           </li>
         </ul>

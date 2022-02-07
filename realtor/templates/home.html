@@ -60,10 +60,13 @@
             </div>
           </div>
           <!-- cars -->
+          
           <div class="row" > 
-            {% for car in all_cars %}
-            <div class="col-xl-4 col-sm-6 col-12">  
+            {% for car in all_cars %} 
+            <div class="col-xl-4 col-sm-6 col-12"> 
+                
                 <div class="card" style="width: 23rem;">
+                    
                   <img src="{{car.images.url}}" class="card-img-top" alt="...">
                   <div class="card-content">
                     <div class="card-body">
@@ -75,16 +78,19 @@
                         <div class="media-body text-left">
                           <h3>278</h3>
                           <span>New Posts</span>
-                          <a href="#" class="btn btn-outline-success btn-sm float-right" role="button" aria-disabled="true">Details</a>
+                          <a href="{%url 'car_details' car.id %}" class="btn btn-outline-success btn-sm float-right" role="button" aria-disabled="true">Details</a>
                         </div>
                         
                       </div>
                     </div>
                   </div>
+                  
                 </div>
+                
             </div>
             {%endfor%}
           </div>
+         
           
           
         <!-- houses -->
@@ -104,7 +110,7 @@
                         <div class="media-body text-left">
                           <h3>278</h3>
                           <span>New Posts</span>
-                          <a href="#" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+                          <a href="{%url 'house_details' house.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
                         </div>
                       </div>
                     </div>
@@ -134,7 +140,7 @@
                         <div class="media-body text-left">
                           <h3>278</h3>
                           <span>New Posts</span>
-                          <a href="#" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+                          <a href="{% url 'land_details' land.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
                         </div>
                       </div>
                     </div>
