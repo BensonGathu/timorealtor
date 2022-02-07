@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import constants as messages
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -103,6 +104,7 @@ def home(request):
     return render(request,"home.html",context)
 
 #view to upload Houses
+@login_required
 def upload_houses(request):
     current_user = request.user
     form = HouseForm(request.POST or None,
@@ -125,6 +127,7 @@ def upload_houses(request):
 
 
 #view to upload cars
+@login_required
 def upload_cars(request):
     current_user = request.user
     form = CarForm(request.POST or None,
@@ -147,6 +150,7 @@ def upload_cars(request):
 
 
 #view to upload land
+@login_required
 def upload_land(request):
     current_user = request.user
     form = LandForm(request.POST or None,request.FILES or None)
@@ -231,6 +235,64 @@ def renthouse(request):
     }
     return render(request, 'houses.html', context)
 
+@login_required(login_url='login')
+def updatecar(request,id):
+    current_property = get_object_or_404(Car,pk=id)
+    print(current_property)
+    if request.method == 'POST':
+        form = CarUpdateForm(
+                request.POST,request.FILES, instance=current_property)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Property successfully updated!')
+        return HttpResponseRedirect(request.path_info) 
+    else:
+        form = CarUpdateForm(instance=current_property)
+    context = {'form': form,
+                'current_propert': current_property,
+                }
+    
+    return render(request, 'dashboard/uploadcar.html', context)
 
 
+@login_required(login_url='login')
+def updatehouse(request,id):
+    current_property = get_object_or_404(House,pk=id)
+    print(current_property)
+    if request.method == 'POST':
+        form = HouseUpdateForm(
+                request.POST,request.FILES, instance=current_property)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Property successfully updated!')
+        return HttpResponseRedirect(request.path_info) 
+    else:
+        form = HouseUpdateForm(instance=current_property)
+    context = {'form': form,
+                'current_propert': current_property,
+                }
+    
+    return render(request, 'dashboard/uploadhouses.html', context)
+
+
+@login_required(login_url='login')
+def updateland(request,id):
+    current_property = get_object_or_404(Land,pk=id)
+    print(current_property)
+    if request.method == 'POST':
+        form = LandUpdateForm(
+                request.POST,request.FILES, instance=current_property)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Property successfully updated!')
+        return HttpResponseRedirect(request.path_info) 
+    else:
+        form = LandUpdateForm(instance=current_property)
+    context = {'form': form,
+                'current_propert': current_property,
+                }
+    
+    return render(request, 'dashboard/uploadland.html', context)
+
+  
 

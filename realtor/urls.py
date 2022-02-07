@@ -21,6 +21,9 @@ path('buycar',views.buycar,name="buycar"),
 path('rentcar',views.rentcar,name="rentcar"),
 path('buyhouse',views.buyhouse,name="buyhouse"),
 path('renthouse',views.renthouse,name="renthouse"),
+path('updatecar/<int:id>',views.updatecar,name="updatecar"),
+path('updatehouse/<int:id>',views.updatehouse,name="updatehouse"),
+path('updateland/<int:id>',views.updateland,name="updateland"),
 
 
 

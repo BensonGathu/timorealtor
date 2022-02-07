@@ -68,12 +68,22 @@ class HouseForm(forms.ModelForm):
 
 
 
+class HouseUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = House
+        fields = ['title', 'house_type', 'location',
+                  'is_rent', 'is_buy', 'price', 'images',
+                  'image1','image2','bedroom','shower',"garage",
+                  'hse_features','apt_features','description']
+
 class CarForm(forms.ModelForm):
 
     class Meta:
         model = Car
         fields = ['title', 'model', 'number_plate','year','images',
         'image1','image2','car_type','price','location','description','is_rent', 'is_buy',]
+
 
     def __init__(self, *args, **kwargs):
         super(CarForm, self).__init__(*args, **kwargs)
@@ -88,6 +98,15 @@ class CarForm(forms.ModelForm):
         self.fields['price'].required = True
         self.fields['location'].required = True
         self.fields['description'].required = True
+
+
+class CarUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Car
+        fields = ['title', 'model', 'number_plate','year','images',
+        'image1','image2','car_type','price','location','description','is_rent', 'is_buy',]
+
 
 class LandForm(forms.ModelForm):
 
@@ -107,6 +126,13 @@ class LandForm(forms.ModelForm):
         self.fields['image2'].required = True
         
 
+class LandUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Land
+        fields = ['size', 'price', 'location','description','images','is_rent', 'is_buy',
+        'image1','image2']
+
 class ContactForm(forms.Form):
     name = forms.CharField(required=True)
     phone = forms.IntegerField(required=True)
@@ -122,3 +148,8 @@ class ContactForm(forms.Form):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget.attrs['placeholder'] = self.fields['email'].label or 'email@address.com'
         self.fields['subject'].widget.attrs['placeholder'] = self.fields['subject'].label or 'Subject'
+
+
+
+
+
