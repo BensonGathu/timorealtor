@@ -24,6 +24,9 @@ path('renthouse',views.renthouse,name="renthouse"),
 path('updatecar/<int:id>',views.updatecar,name="updatecar"),
 path('updatehouse/<int:id>',views.updatehouse,name="updatehouse"),
 path('updateland/<int:id>',views.updateland,name="updateland"),
+path('mylands',views.mylands,name="mylands"),
+path('mycars',views.mycars,name="mycars"),
+path('myhouses',views.myhouses,name="myhouses"),
 
 
 

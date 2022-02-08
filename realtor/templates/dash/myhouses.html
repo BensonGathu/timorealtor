@@ -6,5 +6,39 @@
   
 
 {% block content %}
+<div style="text-align: center;">
+    {%if buy %}
+    <h3>Houses For Sale </h3>
+    {%elif rent %}
+        <h3>Houses for Rent/Lease</h3>
+    {%endif%}
+    
+</div>
+<div class="container card-group">
+    {% for property in selected_property %}
+    <div class="col-4 mb-4">
+    <div class="card">
+      <img src="{{property.images.url}}" class="card-img-top" alt="...">
+      <div class="card-body" >
+        <h5 class="card-title"><b>{{property.title}}</b></h5>
+        <div class="card-footer">
+        <div class="media d-flex">
+          <div class="align-self-center">
+            <i class="icon-pencil primary font-large-2 float-left"></i>
+          </div>
+          <div class="media-body text-left">
+            <small class="text-muted">
+            <h6>{{property.price}}</h6>
+            <span>{{property.house_type}}</span>
+            <a href="{% url 'house_details' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+            </small>
+        </div>
+        </div>
+        </div></div>
+      </div>
+</div>
+    {%endfor%}
+    </div>
 
+  </div>
 {%endblock%}

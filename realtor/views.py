@@ -170,6 +170,7 @@ def upload_land(request):
                }
     return render(request, 'dash/uploadland.html', context)
 
+#single item
 def car_details(request,id):
     selected_property = get_object_or_404(Car,pk=id)
     context = {"selected_property":selected_property}
@@ -235,10 +236,11 @@ def renthouse(request):
     }
     return render(request, 'houses.html', context)
 
+#update properties
 @login_required(login_url='login')
 def updatecar(request,id):
     current_property = get_object_or_404(Car,pk=id)
-    print(current_property)
+    
     if request.method == 'POST':
         form = CarUpdateForm(
                 request.POST,request.FILES, instance=current_property)
@@ -252,13 +254,13 @@ def updatecar(request,id):
                 'current_propert': current_property,
                 }
     
-    return render(request, 'dashboard/uploadcar.html', context)
+    return render(request, 'dash/uploadcar.html', context)
 
 
 @login_required(login_url='login')
 def updatehouse(request,id):
     current_property = get_object_or_404(House,pk=id)
-    print(current_property)
+   
     if request.method == 'POST':
         form = HouseUpdateForm(
                 request.POST,request.FILES, instance=current_property)
@@ -272,13 +274,13 @@ def updatehouse(request,id):
                 'current_propert': current_property,
                 }
     
-    return render(request, 'dashboard/uploadhouses.html', context)
+    return render(request, 'dash/uploadhouses.html', context)
 
 
 @login_required(login_url='login')
 def updateland(request,id):
     current_property = get_object_or_404(Land,pk=id)
-    print(current_property)
+   
     if request.method == 'POST':
         form = LandUpdateForm(
                 request.POST,request.FILES, instance=current_property)
@@ -292,7 +294,30 @@ def updateland(request,id):
                 'current_propert': current_property,
                 }
     
-    return render(request, 'dashboard/uploadland.html', context)
+    return render(request, 'dash/uploadland.html', context)
 
   
+def mylands(request):
+    selected_property = Land.objects.all()
+    context = {
+        
+        "selected_property":selected_property,
+    }
+    return render(request, 'dash/mylands.html', context)
 
+def myhouses(request):
+    selected_property = House.objects.all()
+    context = {
+        
+        "selected_property":selected_property,
+    }
+    return render(request, 'dash/myhouses.html', context)
+
+
+def mycars(request):
+    selected_property = Car.objects.all()
+    context = {
+        
+        "selected_property":selected_property,
+    }
+    return render(request, 'dash/mycars.html', context)

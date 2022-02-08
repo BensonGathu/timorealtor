@@ -11723,7 +11723,7 @@ body {
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="navbar-brand ps-3" href="{% url 'home' %}">Home</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -11761,13 +11761,13 @@ body {
                             <!-- Cars -->
                             <!-- start------------------------------------------------- -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCars" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa fa-car"></i></div>
                                 Cars
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseCars" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">My Cars</a>
+                                    <a class="nav-link" href="{%url 'mycars'%}">My Cars</a>
                                     <a class="nav-link" href="{%url 'addcars' %}">Add Car</a>
                                 </nav>
                             </div>
@@ -11776,13 +11776,13 @@ body {
                              <!-- Houses -->
                             <!-- start------------------------------------------------- -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseHouses" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa fa-home"></i></div>
                                 Houses
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseHouses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">My Houses</a>
+                                    <a class="nav-link" href="{%url 'myhouses'%}">My Houses</a>
                                     <a class="nav-link" href="{%url 'addhouses' %}">Add House</a>
                                 </nav>
                             </div>
@@ -11792,13 +11792,13 @@ body {
                             <!-- Lands -->
                                 <!-- start------------------------------------------------- -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLands" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa fa-globe"></i></div>
                                 Land
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLands" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">My Lands</a>
+                                    <a class="nav-link" href="{%url 'mylands'%}">My Lands</a>
                                     <a class="nav-link" href="{%url 'addland' %}">Add Land</a>
                                 </nav>
                             </div>
