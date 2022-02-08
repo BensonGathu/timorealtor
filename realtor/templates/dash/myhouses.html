@@ -14,9 +14,9 @@
     {%endif%}
     
 </div>
-<div class="container card-group">
+<div class="container card-group ">
     {% for property in selected_property %}
-    <div class="col-4 mb-4">
+    <div class="col-4 mb-4 ">
     <div class="card">
       <img src="{{property.images.url}}" class="card-img-top" alt="...">
       <div class="card-body" >
@@ -31,6 +31,7 @@
             <h6>{{property.price}}</h6>
             <span>{{property.house_type}}</span>
             <a href="{% url 'house_details' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+            <a href="{% url 'updatehouse' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Edit</a>
             </small>
         </div>
         </div>

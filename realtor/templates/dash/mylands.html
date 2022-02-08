@@ -31,7 +31,9 @@
                 <h6>{{property.price}}</h6>
                 <span>{{property.size}}</span>
                 <a href="{% url 'land_details' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
-              </div></small>
+                <a href="{% url 'updateland' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Edit</a></small>
+              </div>
+             
           </div>
       </div>
     </div>
