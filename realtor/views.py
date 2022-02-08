@@ -87,7 +87,7 @@ def dashboard(request):
                 "land_count":land_count,
                 "car_count":car_count
                  }
-    return render(request, 'dashboard/dashboard.html', context)
+    return render(request, 'dash/dashboard.html', context)
 
 
 def home(request):
@@ -123,7 +123,7 @@ def upload_houses(request):
     context = {'form': form,
                'current_user': current_user
                }
-    return render(request, 'dashboard/uploadhouses.html', context)
+    return render(request, 'dash/uploadhouses.html', context)
 
 
 #view to upload cars
@@ -146,7 +146,7 @@ def upload_cars(request):
     context = {'form': form,
                'current_user': current_user
                }
-    return render(request, 'dashboard/uploadcar.html', context)
+    return render(request, 'dash/uploadcar.html', context)
 
 
 #view to upload land
@@ -168,7 +168,7 @@ def upload_land(request):
     context = {'form': form,
                'current_user': current_user
                }
-    return render(request, 'dashboard/uploadland.html', context)
+    return render(request, 'dash/uploadland.html', context)
 
 def car_details(request,id):
     selected_property = get_object_or_404(Car,pk=id)
