@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import constants as messages
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
+from django.core.mail import send_mail, BadHeaderError
 
 # Create your views here.
 
@@ -91,6 +92,22 @@ def dashboard(request):
 
 
 def home(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['admin@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('success')
+   
     current_user = request.user
     all_cars = Car.objects.all().order_by('-id')[:3] 
     all_land = Land.objects.all().order_by('-id')[:3] 
@@ -98,10 +115,15 @@ def home(request):
     context = {"current_user":current_user,
                 "all_cars":all_cars,
                 "all_land":all_land,
-                "all_houses":all_houses
+                "all_houses":all_houses,
+                "form":form,
+                
                 }
     all_data = []
+
+   
     return render(request,"home.html",context)
+    
 
 #view to upload Houses
 @login_required
@@ -321,3 +343,25 @@ def mycars(request):
         "selected_property":selected_property,
     }
     return render(request, 'dash/mycars.html', context)
+
+
+def contactView(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['admin@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('success')
+    return render(request, "home.html", {'form': form})
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')

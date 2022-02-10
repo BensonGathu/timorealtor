@@ -141,8 +141,8 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'Message, please add any additional information.'}), required=True)
 
-    def __str__(self):
-        return self.from_email
+    # def __str__(self):
+    #     return self.email
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
@@ -150,6 +150,6 @@ class ContactForm(forms.Form):
         self.fields['subject'].widget.attrs['placeholder'] = self.fields['subject'].label or 'Subject'
 
 
-
+ 
 
 
