@@ -251,33 +251,56 @@
     
                         </div>
                         <div class="col-md-4"> 
-                           <form class="w-80 p-3">
+                          <form method="post" >
+                            {% csrf_token %}
+                            <div class="row mb-4">
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" id="name" name="name" class="form-control" placeholder="Name" /> 
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number"/>
+                                </div>
+                              </div>
+                            </div>
+                              <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"> 
+                              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div><br>
+                              <input type="text" class="form-control" id="subject" name="subject" placeholder="" value="{{selected_property.title}} {{selected_property.model}} {{selected_property.year}} {{selected_property.number_plate}}">  <br> 
+                              <textarea class="form-control" id="message" rows="3" name="message" placeholder="message"> Hello I'm interested in the following product.</textarea> <br>
+                          
+                              <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+                          </form>
+
+                           <!-- <form method="post" class="w-80 p-3">
+                            {% csrf_token %}
                             <div class="mb-2" >
-                                <!-- <label for="exampleInputName" class="form-label">Name</label> -->
-                                <input type="text" class="form-control " id="exampleInputName" placeholder="Name" >
+                                
+                                <input type="text" class="form-control " name="name" id="exampleInputName" placeholder="Name" >
                                
                               </div>
                               <div class="mb-2">
-                                <!-- <label for="exampleInputName" class="form-label">Phone</label> -->
-                                <input type="text" class="form-control" id="exampleInputName" placeholder="Phone Number">
+                              
+                                <input type="text" class="form-control" name="phone" id="exampleInputName" placeholder="Phone Number">
                                
                               </div>
                             <div class="mb-2">
-                              <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" >
+                              <label for="exampleInputEmail1" class="form-label">Email address</label>
+                              <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" >
                               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div class="mb-2">
-                                <!-- <label for="exampleInputName" class="form-label">Message</label> -->
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Hello i'm interested in [{{selected_property.title}} {{selected_property.model}} {{selected_property.year}} {{selected_property.number_plate}}] </textarea>
+                               
+                                <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3">Hello i'm interested in [{{selected_property.title}} {{selected_property.model}} {{selected_property.year}} {{selected_property.number_plate}}] </textarea>
                                
                               </div>
-                            <!-- <div class="mb-3 form-check">
+                            <div class="mb-3 form-check">
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
                               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div> -->
+                            </div>
                             <button type="submit" class="btn btn-primary">Send Message</button>
-                          </form>
+                          </form> -->
                         </div>
                       
     

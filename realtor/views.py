@@ -92,22 +92,27 @@ def dashboard(request):
 
 
 def home(request):
-    if request.method == 'GET':
-        form = ContactForm()
-    else:
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            phone = form.cleaned_data['phone']
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
-            try:
-                send_mail(subject, message, from_email, ['admin@example.com'])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('success')
-   
+    if request.method == "POST":
+        message_name = request.POST.get("name")
+        message_phone = request.POST.get("phone")
+        message_email = request.POST.get("email")
+        message_subject = request.POST.get("subject")
+        message = request.POST["message"]
+
+        data = {"message_name":message_name,
+                "message_phone":message_phone,
+                "message_email":message_email,
+                "message_subject":message_subject,
+                "message":message
+                    }
+        message = '''New message:{}  
+                From:{}   
+                Phone Number:{}
+                '''.format(data['message'], data['message_email'],data['message_phone'])
+        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        messages.success(
+                    request, f"ThankYou for Emailing Us. We'll get back to you Shortly.")
+
     current_user = request.user
     all_cars = Car.objects.all().order_by('-id')[:3] 
     all_land = Land.objects.all().order_by('-id')[:3] 
@@ -116,11 +121,11 @@ def home(request):
                 "all_cars":all_cars,
                 "all_land":all_land,
                 "all_houses":all_houses,
-                "form":form,
+                
                 
                 }
     all_data = []
-
+        
    
     return render(request,"home.html",context)
     
@@ -194,16 +199,76 @@ def upload_land(request):
 
 #single item
 def car_details(request,id):
+    if request.method == "POST":
+        message_name = request.POST.get("name")
+        message_phone = request.POST.get("phone")
+        message_email = request.POST.get("email")
+        message_subject = request.POST.get("subject")
+        message = request.POST["message"]
+
+        data = {"message_name":message_name,
+                "message_phone":message_phone,
+                "message_email":message_email,
+                "message_subject":message_subject,
+                "message":message
+                    }
+        message = '''New message:{}  
+                From:{}   
+                Phone Number:{}
+                '''.format(data['message'], data['message_email'],data['message_phone'])
+        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        messages.success(
+                    request, f"ThankYou for showing interest in our product. We'll get back to you Shortly.")
     selected_property = get_object_or_404(Car,pk=id)
     context = {"selected_property":selected_property}
     return render(request, 'singlecardetails.html', context)
 
 def house_details(request,id):
+    if request.method == "POST":
+        message_name = request.POST.get("name")
+        message_phone = request.POST.get("phone")
+        message_email = request.POST.get("email")
+        message_subject = request.POST.get("subject")
+        message = request.POST["message"]
+
+        data = {"message_name":message_name,
+                "message_phone":message_phone,
+                "message_email":message_email,
+                "message_subject":message_subject,
+                "message":message
+                    }
+        message = '''New message:{}  
+                From:{}   
+                Phone Number:{}
+                '''.format(data['message'], data['message_email'],data['message_phone'])
+        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        messages.success(
+                    request, f"ThankYou for showing interest in our product. We'll get back to you Shortly.")
     selected_property = get_object_or_404(House,pk=id)
     context = {"selected_property":selected_property}
     return render(request, 'singlehousedetails.html', context)
 
 def land_details(request,id):
+    if request.method == "POST":
+        message_name = request.POST.get("name")
+        message_phone = request.POST.get("phone")
+        message_email = request.POST.get("email")
+        message_subject = request.POST.get("subject")
+        message = request.POST["message"]
+
+        data = {"message_name":message_name,
+                "message_phone":message_phone,
+                "message_email":message_email,
+                "message_subject":message_subject,
+                "message":message
+                    }
+        message = '''New message:{}  
+                From:{}   
+                Phone Number:{}
+                '''.format(data['message'], data['message_email'],data['message_phone'])
+        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        messages.success(
+                    request, f"ThankYou for showing interest in our product. We'll get back to you Shortly.")
     selected_property = get_object_or_404(Land,pk=id)
     context = {"selected_property":selected_property}
     return render(request, 'singlelanddetails.html', context)
@@ -363,5 +428,5 @@ def contactView(request):
             return redirect('success')
     return render(request, "home.html", {'form': form})
 
-def successView(request):
-    return HttpResponse('Success! Thank you for your message.')
+# def successView(request):
+#     return HttpResponse('Success! Thank you for your message.')
