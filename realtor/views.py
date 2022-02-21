@@ -83,10 +83,12 @@ def dashboard(request):
     house_count = House.objects.count()
     land_count = Land.objects.count()
     car_count = Car.objects.count()
+    total_count = house_count+ land_count+car_count
 
     context = {"house_count":house_count,
                 "land_count":land_count,
-                "car_count":car_count
+                "car_count":car_count,
+                "total_count":total_count
                  }
     return render(request, 'dash/dashboard.html', context)
 

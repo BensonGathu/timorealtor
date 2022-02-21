@@ -112,7 +112,7 @@ class LandForm(forms.ModelForm):
 
     class Meta:
         model = Land
-        fields = ['size', 'price', 'location','description','images','is_rent', 'is_buy',
+        fields = ['title','size', 'price', 'location','description','images','is_rent', 'is_buy',
         'image1','image2']
 
     def __init__(self, *args, **kwargs):
@@ -130,7 +130,7 @@ class LandUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Land
-        fields = ['size', 'price', 'location','description','images','is_rent', 'is_buy',
+        fields = ['title','size', 'price', 'location','description','images','is_rent', 'is_buy',
         'image1','image2']
 
 class ContactForm(forms.Form):
