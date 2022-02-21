@@ -1,1 +1,1 @@
-web: gunicorn gamesreview.wsgi --log-file -
+web: gunicorn timorealtor.wsgi --log-file -
