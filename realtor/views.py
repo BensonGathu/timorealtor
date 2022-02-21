@@ -78,7 +78,7 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-@login_required
+@login_required(login_url='login')
 def dashboard(request):
     house_count = House.objects.count()
     land_count = Land.objects.count()
@@ -111,7 +111,7 @@ def home(request):
                 From:{}   
                 Phone Number:{}
                 '''.format(data['message'], data['message_email'],data['message_phone'])
-        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        send_mail(data['message_subject'],message,data['message_email'],['Morric150@gmail.com'])
         messages.success(
                     request, f"ThankYou for Emailing Us. We'll get back to you Shortly.")
 
@@ -229,7 +229,7 @@ def car_details(request,id):
                 From:{}   
                 Phone Number:{}
                 '''.format(data['message'], data['message_email'],data['message_phone'])
-        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        send_mail(data['message_subject'],message,data['message_email'],['Morric150@gmail.com'])
         messages.success(
                     request, f"ThankYou for showing interest in our product. We'll get back to you Shortly.")
     selected_property = get_object_or_404(Car,pk=id)
@@ -254,7 +254,7 @@ def house_details(request,id):
                 From:{}   
                 Phone Number:{}
                 '''.format(data['message'], data['message_email'],data['message_phone'])
-        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        send_mail(data['message_subject'],message,data['message_email'],['Morric150@gmail.com'])
         messages.success(
                     request, f"ThankYou for showing interest in our product. We'll get back to you Shortly.")
     selected_property = get_object_or_404(House,pk=id)
@@ -279,7 +279,7 @@ def land_details(request,id):
                 From: {}   
                 Phone Number:{}
                 '''.format(data['message'], data['message_email'],data['message_phone'])
-        send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
+        send_mail(data['message_subject'],message,data['message_email'],['Morric150@gmail.com'])
         messages.success(
                     request, f"ThankYou for showing interest in our product. We'll get back to you Shortly.")
     selected_property = get_object_or_404(Land,pk=id)
@@ -347,7 +347,7 @@ def updatecar(request,id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Property successfully updated!')
-        return HttpResponseRedirect(request.path_info) 
+        return redirect('mycars')
     else:
         form = CarUpdateForm(instance=current_property)
     context = {'form': form,
@@ -367,7 +367,7 @@ def updatehouse(request,id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Property successfully updated!')
-        return HttpResponseRedirect(request.path_info) 
+        return redirect('myhouses')
     else:
         form = HouseUpdateForm(instance=current_property)
     context = {'form': form,
@@ -387,7 +387,7 @@ def updateland(request,id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Property successfully updated!')
-        return HttpResponseRedirect(request.path_info) 
+        return redirect('mylands')
     else:
         form = LandUpdateForm(instance=current_property)
     context = {'form': form,
@@ -396,7 +396,7 @@ def updateland(request,id):
     
     return render(request, 'dash/uploadland.html', context)
 
-  
+@login_required(login_url='login')
 def mylands(request):
     selected_property = Land.objects.all()
     context = {
@@ -405,6 +405,7 @@ def mylands(request):
     }
     return render(request, 'dash/mylands.html', context)
 
+@login_required(login_url='login')
 def myhouses(request):
     selected_property = House.objects.all()
     context = {
@@ -413,7 +414,7 @@ def myhouses(request):
     }
     return render(request, 'dash/myhouses.html', context)
 
-
+@login_required(login_url='login')
 def mycars(request):
     selected_property = Car.objects.all()
     context = {
@@ -422,7 +423,7 @@ def mycars(request):
     }
     return render(request, 'dash/mycars.html', context)
 
-@login_required
+@login_required(login_url='login')
 def delete_car(request, id):
     job = get_object_or_404(Car, pk=id)
     if job:
@@ -431,7 +432,7 @@ def delete_car(request, id):
             request, f'Car successfully deleted.')
         return redirect('mycars')
 
-@login_required
+@login_required(login_url='login')
 def delete_house(request, id):
     job = get_object_or_404(House, pk=id)
     if job:

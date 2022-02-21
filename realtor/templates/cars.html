@@ -18,15 +18,15 @@
   <div class="row">
     {% for property in selected_property %}
     <div class="col-sm-4">
-    <div class="card">
-      <img src="{{property.images.url}}" class="card-img-top" alt="...">
+    <div class="card" height="200px" width="450px">
+      <img src="{{property.images.url}}" class="card-img-top" alt="..." >
       <div class="card-body" >
         <h5 class="card-title"><b>{{property.title}}</b></h5>
         <div class="card-footer">
         <div class="media d-flex">
           <div class="media-body text-left">
             <small class="text-muted">
-            <h6>{{property.price}}</h6>
+            <h6> <b> Ksh.</b>{{property.price}}</h6>
             <span>{{property.year}}</span>
                 </small>
             <a href="{% url 'car_details' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
