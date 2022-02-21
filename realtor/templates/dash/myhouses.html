@@ -6,40 +6,59 @@
   
 
 {% block content %}
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
     {%if buy %}
     <h3>Houses For Sale </h3>
     {%elif rent %}
         <h3>Houses for Rent/Lease</h3>
     {%endif%}
     
-</div>
+</div> -->
 <div class="container card-group ">
+  <div class="row">
     {% for property in selected_property %}
-    <div class="col-4 mb-4 ">
+    <div class="col-sm-4 ">
     <div class="card">
       <img src="{{property.images.url}}" class="card-img-top" alt="...">
       <div class="card-body" >
         <h5 class="card-title"><b>{{property.title}}</b></h5>
-        <div class="card-footer">
-        <div class="media d-flex">
-          <div class="align-self-center">
-            <i class="icon-pencil primary font-large-2 float-left"></i>
+        <div class="row text-muted">
+          <div class="col-6">
+            {{property.price}}M
           </div>
-          <div class="media-body text-left">
-            <small class="text-muted">
-            <h6>{{property.price}}</h6>
+          <div class="col-6">
             <span>{{property.house_type}}</span>
-            <a href="{% url 'house_details' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
-            <a href="{% url 'updatehouse' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Edit</a>
-            </small>
+          </div>
         </div>
-        </div>
-        </div></div>
+        <div class="card-footer">
+        
+          <div class="media-body text-left">
+             
+              <div class="row align-items-start">
+                <div class="col-4">
+                  <a href="{% url 'house_details' property.id %}" class="btn btn-outline-primary btn-sm float-right" role="button" aria-disabled="true">Details</a>
+                </div>
+                <div class="col-4">
+                  <a href="{% url 'updatehouse' property.id %}" role="button" aria-disabled="true"><img src="https://img.icons8.com/cute-clipart/40/000000/edit.png"/></a> 
+                </div>
+                <div class="col-4">
+                  <a href="{% url 'deletehouse' property.id %}"  aria-disabled="true"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="30" height="30"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#e74c3c"><path d="M77.44759,14.33333c-3.70517,0 -7.24517,1.46424 -9.86817,4.08724l-3.07943,3.07943h-35.83333c-2.58456,-0.03655 -4.98858,1.32136 -6.29153,3.55376c-1.30295,2.2324 -1.30295,4.99342 0,7.22582c1.30295,2.2324 3.70697,3.59031 6.29153,3.55376h114.66667c2.58456,0.03655 4.98858,-1.32136 6.29153,-3.55376c1.30295,-2.2324 1.30295,-4.99342 0,-7.22582c-1.30295,-2.2324 -3.70697,-3.59031 -6.29153,-3.55376h-35.83333l-3.07943,-3.07943c-2.61583,-2.623 -6.163,-4.08724 -9.86816,-4.08724zM31.28418,50.16667l10.94596,95.05632c0.946,7.095 7.05502,12.44368 14.20736,12.44368h59.111c7.15233,0 13.26819,-5.34018 14.22135,-12.49968l10.94597,-95.00032z"></path></g></g></svg>
+                  </a> 
+            </div>     
+             
+            </div>
+          </div>
       </div>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
 </div>
-    {%endfor%}
+    
     </div>
 
-  </div>
+ 
 {%endblock%}

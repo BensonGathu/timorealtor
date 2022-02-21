@@ -27,6 +27,9 @@ path('updateland/<int:id>',views.updateland,name="updateland"),
 path('mylands',views.mylands,name="mylands"),
 path('mycars',views.mycars,name="mycars"),
 path('myhouses',views.myhouses,name="myhouses"),
+path('deletecar/<int:id>',views.delete_car,name="deletecar"),
+path('deletehouse/<int:id>',views.delete_house,name="deletehouse"),
+path('deleteland/<int:id>',views.delete_land,name="deleteland"),
 
 
 

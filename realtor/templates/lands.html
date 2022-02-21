@@ -17,8 +17,9 @@
     
 </div>
 <div class="container card-group">
+  <div class="row">
     {% for property in selected_property %}
-    <div class="col-4">
+    <div class="col-sm-4">
     <div class="card">
       <img src="{{property.images.url}}" class="card-img-top" alt="...">
       <div class="card-body" >
@@ -40,5 +41,5 @@
     </div>
 
   </div>
-</div>
+
 {%endblock%}

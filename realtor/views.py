@@ -117,11 +117,22 @@ def home(request):
     all_cars = Car.objects.all().order_by('-id')[:3] 
     all_land = Land.objects.all().order_by('-id')[:3] 
     all_houses = House.objects.all().order_by('-id')[:3] 
+    c_images = []
+    for car in all_cars:
+        c_images.append(car.images.url)
+
+    for land in all_land:
+        c_images.append(land.images.url)
+    
+    for house in all_houses:
+        c_images.append(house.images.url)
+
+    print(c_images)
     context = {"current_user":current_user,
                 "all_cars":all_cars,
                 "all_land":all_land,
                 "all_houses":all_houses,
-                
+                "c_images":c_images
                 
                 }
     all_data = []
@@ -263,7 +274,7 @@ def land_details(request,id):
                 "message":message
                     }
         message = '''New message:{}  
-                From:{}   
+                From: {}   
                 Phone Number:{}
                 '''.format(data['message'], data['message_email'],data['message_phone'])
         send_mail(data['message_subject'],message,data['message_email'],['bgathu04@gmail.com'])
@@ -409,24 +420,49 @@ def mycars(request):
     }
     return render(request, 'dash/mycars.html', context)
 
+@login_required
+def delete_car(request, id):
+    job = get_object_or_404(Car, pk=id)
+    if job:
+        job.delete()
+        messages.success(
+            request, f'Car successfully deleted.')
+        return redirect('mycars')
 
-def contactView(request):
-    if request.method == 'GET':
-        form = ContactForm()
-    else:
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            phone = form.cleaned_data['phone']
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
-            try:
-                send_mail(subject, message, from_email, ['admin@example.com'])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('success')
-    return render(request, "home.html", {'form': form})
+@login_required
+def delete_house(request, id):
+    job = get_object_or_404(House, pk=id)
+    if job:
+        job.delete()
+        messages.success(
+            request, f'Land successfully deleted.')
+        return redirect('myhouses')
 
-# def successView(request):
-#     return HttpResponse('Success! Thank you for your message.')
+@login_required
+def delete_land(request, id):
+    job = get_object_or_404(Land, pk=id)
+    if job:
+        job.delete()
+        messages.success(
+            request, f'Land successfully deleted.')
+        return redirect('mylands')
+
+
+# def contactView(request):
+#     if request.method == 'GET':
+#         form = ContactForm()
+#     else:
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
+#             name = form.cleaned_data['name']
+#             phone = form.cleaned_data['phone']
+#             subject = form.cleaned_data['subject']
+#             from_email = form.cleaned_data['email']
+#             message = form.cleaned_data['message']
+#             try:
+#                 send_mail(subject, message, from_email, ['admin@example.com'])
+#             except BadHeaderError:
+#                 return HttpResponse('Invalid header found.')
+#             return redirect('success')
+#     return render(request, "home.html", {'form': form})
+
