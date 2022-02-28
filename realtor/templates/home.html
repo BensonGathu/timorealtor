@@ -10,12 +10,7 @@
 <!-- carousel -->
 <style>
 
-  .card-img-top:hover {
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.5); 
-  }
-  </style>
+</style>
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -99,7 +94,7 @@
             </div>
           </div>
           
-          
+          <br>
         <!-- houses -->
         <div class="container card-group">
           <div class="row">
@@ -138,7 +133,12 @@
             {% for land in all_land %}
             <div class="col-sm-4">
             <div class="card" height="200px" width="450px">
-              <img src="{{land.images.url}}" class="card-img-top" alt="..." >
+             
+  
+              <img src="{{land.images.url}}" class="card-img-top mySlides" alt="..." >
+              <!-- <img src="{{land.image1.url}}" class="card-img-top mySlides" alt="..." >
+              <img src="{{land.image2.url}}" class="card-img-top mySlides" alt="..." > -->
+
               <div class="card-body" >
                 <h5 class="card-title"><b>{{land.title}}</b></h5>
                 <div class="card-footer">
@@ -169,21 +169,6 @@
   
 <br>
 
-    
-
-
-<!-- Intro -->
-
-
-
-<!-- CTA -->
-
-
-<!-- Offers -->
-
-
-<!-- Testimonials  -->
- <!-- contact email -->
 
  <div class="contact">
     <div class="contact_background" style="background-image:url(../../static/images/pom21.JPG)"></div>
@@ -222,5 +207,20 @@
 <div>
     
 </div>
+<script>
+// var myIndex = 0;
+// carousel();
 
+// function carousel() {
+//   var i;
+//   var x = document.getElementsByClassName("mySlides");
+//   for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";  
+//   }
+//   myIndex++;
+//   if (myIndex > x.length) {myIndex = 1}    
+//   x[myIndex-1].style.display = "block";  
+//   setTimeout(carousel, 2000); // Change image every 2 seconds
+// }
+</script>
 {% endblock %}
