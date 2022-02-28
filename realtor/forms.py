@@ -75,14 +75,14 @@ class HouseUpdateForm(forms.ModelForm):
         fields = ['title', 'house_type', 'location',
                   'is_rent', 'is_buy', 'price', 'images',
                   'image1','image2','bedroom','shower',"garage",
-                  'hse_features','apt_features','description']
+                  'hse_features','apt_features','description',]
 
 class CarForm(forms.ModelForm):
 
     class Meta:
         model = Car
         fields = ['title', 'model', 'number_plate','year','images',
-        'image1','image2','car_type','price','location','description','is_rent', 'is_buy',]
+        'image1','image2','car_type','price','location','description','is_rent', 'is_buy','transmission','fuel','seats',]
 
 
     def __init__(self, *args, **kwargs):
@@ -105,7 +105,7 @@ class CarUpdateForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = ['title', 'model', 'number_plate','year','images',
-        'image1','image2','car_type','price','location','description','is_rent', 'is_buy',]
+        'image1','image2','car_type','price','location','description','is_rent', 'is_buy','transmission','fuel','seats',]
 
 
 class LandForm(forms.ModelForm):

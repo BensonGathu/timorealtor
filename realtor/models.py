@@ -60,7 +60,7 @@ class House(models.Model):
     location = models.CharField(max_length=200,blank=True,null=True)
     is_rent = models.BooleanField(default=False)
     is_buy = models.BooleanField(default=False)
-    price =  models.FloatField()
+    price =  models.CharField(max_length=200,blank=True,null=True)
     images = models.ImageField(upload_to='images/')
     image1 = models.ImageField(upload_to='images/')
     image2 = models.ImageField(upload_to='images/')
@@ -84,6 +84,15 @@ car_types = (
     ("Heavy Equipments","Heavy Equipments"),
     ("Watercrafts & Boats","Watercrafts & Boats"),
 )
+transmission_type = (
+    ("Manual","Manual"),
+    ("Automatic","Automatic"),
+)
+
+fuel_type = (
+    ("Petrol","Petrol"),
+    ("Diesel","Diesel"),
+)
 
 class Car(models.Model):
     employee = models.ForeignKey(
@@ -94,12 +103,15 @@ class Car(models.Model):
     model = models.CharField(max_length=200,blank=True,null=True)
     number_plate = models.CharField(max_length=200,blank=True,null=True)
     year = models.IntegerField()
+    transmission = models.CharField(choices=transmission_type,max_length=2000,blank=True,null=True)
+    fuel = models.CharField(choices=fuel_type,max_length=2000,blank=True,null=True)
+    seats = models.IntegerField()
     is_rent = models.BooleanField(default=False)
     is_buy = models.BooleanField(default=False)
     images = models.ImageField(upload_to='images/')
     image1 = models.ImageField(upload_to='images/')
     image2 = models.ImageField(upload_to='images/')
-    price =  models.FloatField()
+    price =  models.CharField(max_length=200,blank=True,null=True)
     location = models.CharField(max_length=200,blank=True,null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
 
@@ -112,7 +124,7 @@ class Land(models.Model):
         User, on_delete=models.CASCADE, default=None, null=True, blank=True)
     title = models.CharField(max_length=200,blank=True,null=True)
     size = models.CharField(max_length=200,blank=True,null=True)
-    price =  models.FloatField()
+    price =  models.CharField(max_length=200,blank=True,null=True)
     location = models.CharField(max_length=200,blank=True,null=True)
     is_rent = models.BooleanField(default=False)
     is_buy = models.BooleanField(default=False)
